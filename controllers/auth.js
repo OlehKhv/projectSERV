@@ -72,8 +72,12 @@ const logout = async (req, res) => {
 };
 
 const update = async (req, res, next) => {
+    const { id } = req.params;
     const { _id } = req.user;
-    console.log(_id);
+    if (id !== _id.toString()) {
+        throw HttpError(404, "This is not the user's ID");
+    }
+
     const { ...data } = req.body;
 
     const updatedUser = {
