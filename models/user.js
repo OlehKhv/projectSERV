@@ -92,6 +92,7 @@ const loginSchema = Joi.object({
 
 const updateSchema = Joi.object({
     name: Joi.string(),
+    email: Joi.string().email().pattern(emailPattern),
     height: Joi.number().min(150).required(),
     currentWeight: Joi.number().min(35).required(),
     desiredWeight: Joi.number().min(35).required(),
